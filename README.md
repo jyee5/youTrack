@@ -1,7 +1,7 @@
 # budgettingWebApp
 Collaborated with Jessie Pao
 
-Similar to the popular web application Mint.com, this web application will allow you to upload and visualixe your spending, which will then allow you to save more money and be aware of where your expenses are going.  
+Similar to the popular web application Mint.com, this web application will allow you to upload and visualize your spending, which will then allow you to save more money and be aware of where your expenses are going.  
 
 
 Used various sources for designing the look of the webpage.
@@ -14,7 +14,7 @@ HTML5,
 CSS,
 font-awesome.min,
 googlefont api,
-javascriptm
+javascript
 jquery,
 sqlite,
 etc.
