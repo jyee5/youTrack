@@ -17,7 +17,7 @@ class budgeter:
     def log(self, amount, category, message=''):
         from datetime import datetime
         date = str(datetime.now())
-        conn = db.connect('spend.db')
+        conn = db.connect('spen.db')
         cur = conn.cursor()
         sql = '''
         insert into expenses values (
