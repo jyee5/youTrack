@@ -89,7 +89,6 @@ input[type=text], input[type=password] {
 
   .login-body {
 	padding: 8em 0 9em 0;
-	background-image: url(../../images/banner.jpg);
 	background-size: cover;
 	background-position: bottom;
 	background-attachment: fixed;
@@ -136,6 +135,12 @@ input[type=text], input[type=password] {
     border-bottom: 5px solid #33cc88;
     font-size: 20px;
     background-color: rgba(226, 226, 226, 0.849);
+}
+
+.create-account-body {
+	text-align: center;
+	align-items: center;
+	margin: 10% 10%;
 }
 
 /* Basic */
@@ -1447,7 +1452,7 @@ button,
 
 #banner {
 	padding: 8em 0 9em 0;
-	background-image: url(../../images/banner.jpg);
+	background-image: url(/images/banner.jpg);
 	background-size: cover;
 	background-position: bottom;
 	background-attachment: fixed;

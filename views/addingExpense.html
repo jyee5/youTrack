@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Expense Tracker</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                <a href="/" class="logo"><strong>Budgetting</strong></a>
+            </div>
+        </header>
+        
+        <!--Body-->
+        <section class="new-item">
+            <form method="post">
+            <h1>Enter your expenses</h1>
+            <div class="row uniform">
+                <input type="text" placeholder="Cost" name="uname" id="amount" required>
+                <div class="12u$">
+                    <div class="select-wrapper">
+                        <select name="Category" id="category" required>
+                            <option value="" disabled selected>- Category -</option>
+                            <option value="1">Food</option>
+                            <option value="2">Transportation</option>
+                            <option value="3">Savings</option>
+                            <option value="4">Other</option>
+                        </select>
+                        <textarea name="item-description" id="item-description" placeholder="Enter your item description" rows="4"></textarea>
+                    </div>
+                </div>
+                <button type="submit">Add item</button>
+                <button type=reset>Reset</button>
+            </div>
+        </form> 
+        </section>
+        
+        
+        <h4>Expenses</h4>
+        <div class="table-wrapper">
+            <table id="items">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

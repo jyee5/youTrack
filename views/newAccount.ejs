@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Login</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/css/main.css" />
+	</head>
+	<body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                <a href="/" class="logo"><strong>Budgetting</strong></a>
+                <nav id="nav">
+                    <a href="/">Home</a>
+                    <a href="/login">Login</a>
+                    <a onclick="document.getElementById('start').style.display='block'">More Info</a>
+                </nav>
+                <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            </div>
+        </header>
+
+        <!-- login -->
+        <section class="create-account-body">
+            <form class="login-content" method="post" onsubmit="validateLogin()">
+                <div class="container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    
+                    <label for="psw"><b>Re-Type Password</b></label>
+                    <input type="password" placeholder="Enter Password Again" name="psw2" required>
+                    
+                    <button type="submit">Create Account</button>
+                </div>
+                <span class="existAccount">Have an account<a href="/login"> Login?</a></span>
+            </form>
+        </section>    
+
+		<!-- Scripts -->
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/js/main.js"></script>
+
+	</body>
+</html>

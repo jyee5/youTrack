@@ -6,16 +6,17 @@ Similar to the popular web application Mint.com, this web application will allow
 
 Used various sources for designing the look of the webpage.
 
-Created own database, to store the information, with sqlite
+Created own database, to store the information, with mysql
 
 Tools used:
 
-HTML5,
+HTML5/ejs,
 CSS,
 font-awesome.min,
-googlefont api,
-javascript
+node.js,
+express.js,
+javascript,
 jquery,
-sqlite,
+mysql,
 etc.
 
