@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Overview</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+	</head>
+	<body class="subpage">
+        
+        <!-- Header -->
+        <header id="header">
+            <div class="inner">
+                <a href="/" class="logo"><strong>Budgetting</strong></a>
+                <nav id="nav">
+                    <a href="/">Home</a>
+                    <a href="/login">Login</a>
+                    <a href="/table">Overview</a>
+                    <a onclick="document.getElementById('start').style.display='block'">More Info</a>
+                </nav>
+                <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            </div>
+        </header>
+        <div class="chart-container" style="position: relative; height:10vh; width:40vw">
+            <canvas id="pie-chart" width="20" height="20"></canvas>
+        </div>
+        <!-- <script>
+            let mychart = document.getElementById('pie-chart');
+            let piechart = new Chart(mychart, {
+                type: 'pie',
+                data: {
+                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                datasets: [{
+                    label: "Population (millions)",
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                    data: [2478,5267,734,784,433]
+                    }]
+                }
+            });
+
+        </script> -->
+        
+        
+
+		<!-- Scripts -->
+        <!-- <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/util.js"></script>
+        <script src="/assets/js/main.js"></script> -->
+        <script src="assets/js/dataViz.js"></script>
+
+	</body>
+</html>

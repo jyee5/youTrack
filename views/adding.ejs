@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Overview</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="/css/main.css" />
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://kit.fontawesome.com/d1749e6def.js" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                $(".hamburger").click(function(){
+                    $(".wrapper").toggleClass("collapse");
+                });
+            });
+        </script>
+	</head>
+	<body class="subpage">
+        <div class="wrapper">
+            <div class="top_navbar">
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="top_menu">
+                    <div class="logo">Budgetting</div>
+                    <ul class="sidebar-list">
+                        <li><a href="#"><i class="fas fa-user"></i></i></a></li>     <!-- profile -->
+                        <li><a href="/home"><i class="fas fa-home"></i></a></li>  <!-- home -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <ul class="sidebar-list">
+                    <li><a href="/adding" class="active">
+                        <span class="icon"><i class="fas fa-plus-circle" aria-hidden="true"></i></span>
+                        <span class="title">Add Form</span>
+                    </a></li>
+                    <li><a href="/pieChart">
+                        <span class="icon"><i class="fas fa-chart-pie" aria-hidden="true"></i></span>
+                        <span class="title">Monthly Categories</span>
+                    </a></li>
+                    <li><a href="#">
+                        <span class="icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
+                        <span class="title">Yearly Spending</span>
+                    </a></li>
+                    <li><a href="/monthlyExpensesTable">
+                        <span class="icon"><i class="fas fa-wallet" aria-hidden="true"></i></span>
+                        <span class="title">Monthly Expenses</span>
+                    </a></li>
+                    <li><a href="/monthlyIncomeTable">
+                        <span class="icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></span>
+                        <span class="title">Monthly Income</span>
+                    </a></li>
+                    <li><a href="/monthlySavingsTable">
+                        <span class="icon"><i class="fas fa-hand-holding-usd" aria-hidden="true"></i></span>
+                        <span class="title">Monthly Savings</span>
+                    </a></li>
+                </ul>
+            </div>
+
+            <div class="main-content">
+                <!-- Monthly Expenses Form -->
+                <div class="new-item">
+                    <form method="post">
+                        <h1>Enter your expenses</h1>
+                        <div class="row uniform">
+                            <input type="text" placeholder="Cost" name="amount" id="amount" required>
+                            <div class="12u$">
+                                <div class="select-wrapper">
+                                    <select name="category" id="category" required>
+                                        <option value="" disabled selected>- Category -</option>
+                                        <option value="1">Food</option>
+                                        <option value="2">Transportation</option>
+                                        <option value="3">Savings</option>
+                                        <option value="4">Other</option>
+                                    </select>
+                                    <textarea name="description" id="description" placeholder="Enter your item description" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit">Add item</button>
+                            <button type=reset>Reset</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
+
+		<!-- Scripts -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets//js/util.js"></script>
+        <script src="/assets//js/main.js"></script>
+
+	</body>
+</html>
