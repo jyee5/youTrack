@@ -34,27 +34,31 @@
 
             <div class="sidebar">
                 <ul class="sidebar-list">
-                    <li><a href="/adding" class="active">
+                    <li><a href="/adding?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-plus-circle" aria-hidden="true"></i></span>
-                        <span class="title">Add Form</span>
+                        <span class="title">Add Expenses Form</span>
                     </a></li>
-                    <li><a href="/pieChart">
+                    <li><a href="/addingIncome?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
+                        <span class="icon"><i class="fas fa-plus-circle" aria-hidden="true"></i></span>
+                        <span class="title">Add Income Form</span>
+                    </a></li>
+                    <li><a href="/pieChart?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-chart-pie" aria-hidden="true"></i></span>
                         <span class="title">Monthly Categories</span>
                     </a></li>
-                    <li><a href="#">
+                    <li><a href="/barChart?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
                         <span class="title">Yearly Spending</span>
                     </a></li>
-                    <li><a href="/monthlyExpensesTable">
+                    <li><a href="/monthlyExpensesTable?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-wallet" aria-hidden="true"></i></span>
                         <span class="title">Monthly Expenses</span>
                     </a></li>
-                    <li><a href="/monthlyIncomeTable">
+                    <li><a href="/monthlyIncomeTable?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></span>
                         <span class="title">Monthly Income</span>
                     </a></li>
-                    <li><a href="/monthlySavingsTable">
+                    <li><a href="/monthlySavingsTable?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-hand-holding-usd" aria-hidden="true"></i></span>
                         <span class="title">Monthly Savings</span>
                     </a></li>
@@ -63,6 +67,20 @@
 
             <div class="main-content">
                 <!-- Monthly Expenses Form -->
+
+                <div class="form-dropdown">
+                    <ul>
+                        <li id="dropdown-form">
+                            <a><i class="fas fa-user"></i>
+                                <div id="dropdown-form-content">
+                                    <a href="#">Expenses Form</a>
+                                    <a href="#">Income Form</a>
+                                </div>
+                            </a>
+                        </li>  
+                    </ul>
+                </div>
+               
                 <div class="new-item">
                     <form method="post">
                         <h1>Enter your expenses</h1>
@@ -72,10 +90,16 @@
                                 <div class="select-wrapper">
                                     <select name="category" id="category" required>
                                         <option value="" disabled selected>- Category -</option>
-                                        <option value="1">Food</option>
+                                        <option value="1">Housing</option>
                                         <option value="2">Transportation</option>
-                                        <option value="3">Savings</option>
-                                        <option value="4">Other</option>
+                                        <option value="3">Food</option>
+                                        <option value="4">Utilities</option>
+                                        <option value="5">Insurance</option>
+                                        <option value="6">Medical & Healthcare</option>
+                                        <option value="7">Personal</option>
+                                        <option value="8">Education</option>
+                                        <option value="9">Fun Money</option>
+                                        <option value="10">Other</option>
                                     </select>
                                     <textarea name="description" id="description" placeholder="Enter your item description" rows="4"></textarea>
                                 </div>

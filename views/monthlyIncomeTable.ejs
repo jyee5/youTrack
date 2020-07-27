@@ -41,27 +41,31 @@
 
             <div class="sidebar">
                 <ul class="sidebar-list">
-                    <li><a href="/adding">
+                    <li><a href="/adding?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-plus-circle" aria-hidden="true"></i></span>
-                        <span class="title">Add Form</span>
+                        <span class="title">Add Expenses Form</span>
                     </a></li>
-                    <li><a href="/pieChart">
+                    <li><a href="/addingIncome?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
+                        <span class="icon"><i class="fas fa-plus-circle" aria-hidden="true"></i></span>
+                        <span class="title">Add Income Form</span>
+                    </a></li>
+                    <li><a href="/pieChart?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-chart-pie" aria-hidden="true"></i></span>
-                        <span class="title">Donut Chart</span>
+                        <span class="title">Monthly Categories</span>
                     </a></li>
-                    <li><a href="#">
+                    <li><a href="/barChart?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
-                        <span class="title">Bar Chart</span>
+                        <span class="title">Yearly Spending</span>
                     </a></li>
-                    <li><a href="/monthlyExpensesTable">
+                    <li><a href="/monthlyExpensesTable?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-wallet" aria-hidden="true"></i></span>
                         <span class="title">Monthly Expenses</span>
                     </a></li>
-                    <li><a href="/monthlyIncomeTable" class="active">
+                    <li><a href="/monthlyIncomeTable?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i></span>
                         <span class="title">Monthly Income</span>
                     </a></li>
-                    <li><a href="/monthlySavingsTable">
+                    <li><a href="/monthlySavingsTable?id=<%=userInfo.id%>" id="<%=userInfo.id%>">
                         <span class="icon"><i class="fas fa-hand-holding-usd" aria-hidden="true"></i></span>
                         <span class="title">Monthly Savings</span>
                     </a></li>
@@ -81,14 +85,15 @@
                         if(userData.length!=0) {
                             var i=1;
                             userData.forEach(function(data){
+                                if(data.category == 12){
                         %>
                             <tr>
                                 <td><%=data.description %></td>
                                 <td><%=data.price %></td>
                                 <!-- <td><a href="/user/edit/<%=data.id%>">Edit</a></td> -->
-                                <td><a href="/user/delete/<%=data.id%>">Delete</a></td>
+                                <td><a href="/delete?id=<%=data.id%>" id="<%=data.id%>">Delete</a></td>
                             </tr>
-                        <% i++; }) %>
+                        <% i++; }}) %>
                         <% } else { %>
                             <tr>
                                 <td> colspan="2">No Data Found</td>

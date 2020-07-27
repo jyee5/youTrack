@@ -26,15 +26,8 @@
                 <div class="top_menu">
                     <div class="logo">Budgetting</div>
                     <ul class="sidebar-list">
-                        <li id="dropdown">
-                            <a><i class="fas fa-user"></i>
-                                <div id="dropdown-content">
-                                    <a href="#">View Profile</a>
-                                    <a href="/logout">Sign Out</a>
-                                </div>
-                            </a>
-                        </li>         <!-- profile -->
-                        <li><a href="#"><i class="fas fa-home"></i></a></li>  <!-- home -->
+                        <li><a href="#"><i class="fas fa-user"></i></i></a></li>     <!-- profile -->
+                        <li><a href="/home"><i class="fas fa-home"></i></a></li>  <!-- home -->
                     </ul>
                 </div>
             </div>
@@ -72,22 +65,25 @@
                 </ul>
             </div>
 
-
             <div class="main-content">
+                <!-- Monthly Income Form -->
                 <div class="new-item">
-                    <h2>Monthly Savings</h2>
-                    <%
-                    if(userData.length!=0) {
-                    %>
-                        <h1>Your have saved $<%=saving %> this month.</h1>
-                    %>
-                    <% } else { %>
-                            <td> colspan="2">No Data Found</td>
-                    <% } %>
+                    <form method="post">
+                        <h1>Enter your income</h1>
+                        <div class="row uniform">
+                            <input type="text" placeholder="Cost" name="amount" id="amount" required>
+                            <div class="12u$">
+                                <textarea name="description" id="description" placeholder="Enter your income description" rows="2"></textarea>
+                            </div>
+                            <button type="submit">Add income</button>
+                            <button type=reset>Reset</button>
+                        </div>
+                    </form> 
                 </div>
             </div>
         </div>
-            <!-- Scripts -->
+
+		<!-- Scripts -->
         <script src="/assets/js/jquery.min.js"></script>
         <script src="/assets//js/util.js"></script>
         <script src="/assets//js/main.js"></script>
