@@ -21,3 +21,9 @@ jquery,
 mysql,
 etc.
 
+
+How to run?
+
+Run on server.js
+mySQL database must be installed, and database name "mydb" needs to be present
+
