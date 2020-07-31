@@ -6,11 +6,9 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
 * [Contributing](#contributing)
-* [License](#license)
 * [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
+
 
 
 
@@ -44,110 +42,67 @@ This section should list any major frameworks that you built your project using.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get started, you will need to clone this github file.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+You need to istall Node with the above Link in the Built With Section
 * npm
 ```sh
 npm install npm@latest -g
 ```
 
+
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/jyee5/youTrack.git
 ```
 3. Install NPM packages
 ```sh
-npm install
+npm install <enter mod here>
 ```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
+Mod List Includes
+* bcrypt
+* chart.js
+* dotenv
+* ejs
+* express
+* express-flash
+* express-session
+* mysql
+* nodemon
+* passport
+* passport-local
+* save-dev
 
+4. Install MySQL, and create a database called mydb
+
+5. Run Javascript file named server.js
+```sh
+node server.js
+```
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
-
+1.  Once you logged on, you are at the home screen, which can be then taken to the login page, by clicking the right hand corner
+2.  If you do not have an account, create an account, and then log in
+3.  You will then be taken to the home page of the budgetting portion of the web app
+4.  After you can either add expense, add income, or visualize your data in either a table, pie chart, or bar graph
+5.  Once finished, you can log out in the right hand corner.
 
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
+Jessie Pao - jessiepao2009@gmail.com
+GitHub - https://github.com/jessiepao14
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Justin Yee - justin.yee529@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
-
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=flat-square
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=flat-square
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=flat-square
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=flat-square
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
