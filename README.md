@@ -17,25 +17,21 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+The Web Application, youTrack was designed to ease the idea of budgetting, and saving money.  Many people can budget or track their expenses via Excel, or Google Sheets, but this is more complex than it seems with a lot of manual input and manual visualizations.  With the web application my partner and I created, it will have basic input of expenses and income, and will show the visualization that is necessary to track your expenses.  
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+These include...
+* Pie Chart for the current months expense
+* Bar Chart for the yearly expense, to visualize overtime
 
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
-
+* [Node.js](https://nodejs.org/)
+* Javascript
+* HTML
+* CSS
+* MySQL
+* Many more!
 
 
 <!-- GETTING STARTED -->
