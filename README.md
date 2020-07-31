@@ -23,10 +23,13 @@ These include...
 * Pie Chart for the current months expense
 * Bar Chart for the yearly expense, to visualize overtime
 
+![Screen Shot 2020-07-30 at 5 17 50 PM](https://user-images.githubusercontent.com/54599611/88987147-e73b5800-d289-11ea-80e9-8f64241b2f31.png)
 
+![Screen Shot 2020-07-30 at 5 18 27 PM](https://user-images.githubusercontent.com/54599611/88987159-f15d5680-d289-11ea-8ece-dcb1d8ba58d5.png)
 
+![Screen Shot 2020-07-30 at 5 23 26 PM](https://user-images.githubusercontent.com/54599611/88987178-fde1af00-d289-11ea-8534-707f55576900.png)
 
-
+![Screen Shot 2020-07-30 at 5 23 35 PM](https://user-images.githubusercontent.com/54599611/88987182-00440900-d28a-11ea-954f-c13089f5a7bc.png)
 
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
@@ -37,7 +40,6 @@ This section should list any major frameworks that you built your project using.
 * CSS
 * MySQL
 * Many more!
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
