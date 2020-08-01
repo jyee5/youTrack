@@ -51,6 +51,9 @@ con.connect(function (err) {
     console.log('Connected');
 });
 
+con.query('CREATE TABLE IF NOT EXISTS USERS (id VARCHAR(255), username VARCHAR(255), password VARCHAR(255))', (err, req) => {
+    if (err) throw err;
+});
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
@@ -69,7 +72,6 @@ app.get('/', (req, res) => {
     res.render('index.ejs')
 });
 
-
 app.get('/login', (req, res) => {
     res.render('login.ejs')
 });
@@ -77,7 +79,6 @@ app.get('/login', (req, res) => {
 app.get('/newAccount', (req, res) => {
     res.render('newAccount.ejs', { flash: req.flash('msg')})
 });
-
 
 app.post('/newAccount', (req, res) => {
     try {
@@ -95,7 +96,7 @@ app.post('/newAccount', (req, res) => {
                     if (err) throw err;
                     console.log('1 ID recoreded');
                 });
-                con.query("CREATE TABLE `?` (id VARCHAR(255), category VARCHAR(255), price INT, description VARCHAR(255), year INT, month INT, day INT)", [id], function (err, result) {
+                con.query("CREATE TABLE `?` (id VARCHAR(255), category VARCHAR(255), price FLOAT(20,2), description VARCHAR(255), year INT, month INT, day INT)", [id], function (err, result) {
                     if (err) throw err;
                     console.log('New table created');
                 });
@@ -109,8 +110,6 @@ app.post('/newAccount', (req, res) => {
         res.redirect('/newAccount');
     }
 })
-
-
 
 
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), function (req, res) {
@@ -129,9 +128,11 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login', f
     });
     
     app.get('/monthlyIncomeTable', (req, res) => {
-        var sql = 'SELECT * FROM `?`';
+        var today = new Date();
+        var month = today.getMonth() + 1
+        var sql = 'SELECT * FROM `?` WHERE month = ?';
         userID = (req.query.id);
-        con.query(sql, [userID], function (err, results) {
+        con.query(sql, [userID, month], function (err, results) {
             if (err) throw err;
             //console.log(results);
             res.render('monthlyIncomeTable.ejs', { title: 'User List', userData: results, userInfo: user});
@@ -139,9 +140,11 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login', f
     });
     
     app.get('/monthlyExpensesTable', (req, res, next) => {
-        var sql = 'SELECT * FROM `?`';
+        var today = new Date();
+        var month = today.getMonth() + 1
+        var sql = 'SELECT * FROM `?` WHERE month = ?';
         userID = (req.query.id);
-        con.query(sql, [userID], function (err, results) {
+        con.query(sql, [userID, month], function (err, results) {
             if (err) throw err;
             const categories = ['', 'Housing', 'Transportation', 'Food', 'Utilities', 'Insurance', 'Medical & Healthcare', 'Personal', 'Education', 'Fun Money', 'Other']
             res.render('monthlyExpensesTable.ejs', { title: 'User List', userData: results, expCategories: categories, userInfo: user});
@@ -149,11 +152,13 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login', f
     });
     
     app.get('/monthlySavingsTable', (req, res) => {
-        var sqlIncome = 'Select SUM(price) FROM `?` WHERE category = 12';
-        var sqlExpenses = 'Select SUM(price) FROM `?` WHERE NOT category = 12';
+        var today = new Date();
+        var month = today.getMonth() + 1
+        var sqlIncome = 'Select SUM(price) FROM `?` WHERE category = 12 AND month = ?';
+        var sqlExpenses = 'Select SUM(price) FROM `?` WHERE NOT category = 12 AND month = ?';
         var sql = sqlIncome + ';' + sqlExpenses;
         userID = (req.query.id);
-        con.query(sql, [userID, userID], function (err, results) {
+        con.query(sql, [userID, month, userID, month], function (err, results) {
             if (err) throw err; 
             const savings = results[0]['0']['SUM(price)'] - results[1]['0']['SUM(price)']
             res.render('monthlySavingsTable.ejs', { title: 'User List', userData: results, saving: savings, userInfo: user});
@@ -162,18 +167,20 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login', f
     
     app.get('/pieChart', (req, res) => {
         userID = (req.query.id);
-        var sqlHousing = "SELECT SUM(price) FROM `?` WHERE category = 1";
-        var sqlTrans = "SELECT SUM(price) FROM `?` WHERE category = 2";
-        var sqlFood = "SELECT SUM(price) FROM `?` WHERE category = 3";
-        var sqlUtilities = "SELECT SUM(price) FROM `?` WHERE category = 4";
-        var sqlInsurance = "SELECT SUM(price) FROM `?` WHERE category = 5";
-        var sqlMedical = "SELECT SUM(price) FROM `?` WHERE category = 6";
-        var sqlPersonal = "SELECT SUM(price) FROM `?` WHERE category = 7";
-        var sqlEducation = "SELECT SUM(price) FROM `?` WHERE category = 8";
-        var sqlFunMoney = "SELECT SUM(price) FROM `?` WHERE category = 9";
-        var sqlOther = "SELECT SUM(price) FROM `?` WHERE category = 10";
+        var today = new Date();
+        var month = today.getMonth() + 1
+        var sqlHousing = "SELECT SUM(price) FROM `?` WHERE category = 1 AND month = ?";
+        var sqlTrans = "SELECT SUM(price) FROM `?` WHERE category = 2 AND month = ?";
+        var sqlFood = "SELECT SUM(price) FROM `?` WHERE category = 3 AND month = ?";
+        var sqlUtilities = "SELECT SUM(price) FROM `?` WHERE category = 4 AND month = ?";
+        var sqlInsurance = "SELECT SUM(price) FROM `?` WHERE category = 5 AND month = ?";
+        var sqlMedical = "SELECT SUM(price) FROM `?` WHERE category = 6 AND month = ?";
+        var sqlPersonal = "SELECT SUM(price) FROM `?` WHERE category = 7 AND month = ?";
+        var sqlEducation = "SELECT SUM(price) FROM `?` WHERE category = 8 AND month = ?";
+        var sqlFunMoney = "SELECT SUM(price) FROM `?` WHERE category = 9 AND month = ?";
+        var sqlOther = "SELECT SUM(price) FROM `?` WHERE category = 10 AND month = ?";
         var sql = sqlHousing + ";" + sqlTrans + ";" + sqlFood + ";" + sqlUtilities + ";" + sqlInsurance + ";" + sqlMedical + ";" + sqlPersonal + ";" + sqlEducation + ";" + sqlFunMoney + ";" + sqlOther;
-        con.query(sql, [userID, userID, userID, userID, userID, userID, userID, userID, userID, userID], function (err, results) {
+        con.query(sql, [userID, month, userID, month, userID, month, userID, month, userID, month, userID, month, userID, month, userID, month, userID, month, userID, month], function (err, results) {
             if (err) throw err;
             const categories = ['Housing', 'Transportation', 'Food', 'Utilities', 'Insurance', 'Medical & Healthcare', 'Personal', 'Education', 'Fun Money', 'Other']
             const data = [results[0]['0']['SUM(price)'], results[1]['0']['SUM(price)'], results[2]['0']['SUM(price)'], results[3]['0']['SUM(price)'], results[4]['0']['SUM(price)'], results[5]['0']['SUM(price)'], results[6]['0']['SUM(price)'], results[7]['0']['SUM(price)'], results[8]['0']['SUM(price)'], results[9]['0']['SUM(price)']]
@@ -183,28 +190,29 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login', f
     
     app.get('/barChart', (req, res) => {
         userID = (req.query.id);
-        var sqlJan = "SELECT SUM(price) FROM `?` WHERE month = 1";
-        var sqlFeb = "SELECT SUM(price) FROM `?` WHERE month = 2";
-        var sqlMar = "SELECT SUM(price) FROM `?` WHERE month = 3";
-        var sqlApr = "SELECT SUM(price) FROM `?` WHERE month = 4";
-        var sqlMay = "SELECT SUM(price) FROM `?` WHERE month = 5";
-        var sqlJun = "SELECT SUM(price) FROM `?` WHERE month = 6";
-        var sqlJul = "SELECT SUM(price) FROM `?` WHERE month = 7";
-        var sqlAug = "SELECT SUM(price) FROM `?` WHERE month = 8";
-        var sqlSep = "SELECT SUM(price) FROM `?` WHERE month = 9";
-        var sqlOct = "SELECT SUM(price) FROM `?` WHERE month = 10";
-        var sqlNov = "SELECT SUM(price) FROM `?` WHERE month = 11";
-        var sqlDec = "SELECT SUM(price) FROM `?` WHERE month = 12";
+        var today = new Date();
+        var year = today.getFullYear()
+        var sqlJan = "SELECT SUM(price) FROM `?` WHERE month = 1 AND NOT category = 12 AND year = ?";
+        var sqlFeb = "SELECT SUM(price) FROM `?` WHERE month = 2 AND NOT category = 12 AND year = ?";
+        var sqlMar = "SELECT SUM(price) FROM `?` WHERE month = 3 AND NOT category = 12 AND year = ?";
+        var sqlApr = "SELECT SUM(price) FROM `?` WHERE month = 4 AND NOT category = 12 AND year = ?";
+        var sqlMay = "SELECT SUM(price) FROM `?` WHERE month = 5 AND NOT category = 12 AND year = ?";
+        var sqlJun = "SELECT SUM(price) FROM `?` WHERE month = 6 AND NOT category = 12 AND year = ?";
+        var sqlJul = "SELECT SUM(price) FROM `?` WHERE month = 7 AND NOT category = 12 AND year = ?";
+        var sqlAug = "SELECT SUM(price) FROM `?` WHERE month = 8 AND NOT category = 12 AND year = ?";
+        var sqlSep = "SELECT SUM(price) FROM `?` WHERE month = 9 AND NOT category = 12 AND year = ?";
+        var sqlOct = "SELECT SUM(price) FROM `?` WHERE month = 10 AND NOT category = 12 AND year = ?";
+        var sqlNov = "SELECT SUM(price) FROM `?` WHERE month = 11 AND NOT category = 12 AND year = ?";
+        var sqlDec = "SELECT SUM(price) FROM `?` WHERE month = 12 AND NOT category = 12 AND year = ?";
         var sql = sqlJan + ";" + sqlFeb + ";" + sqlMar + ";" + sqlApr + ";" + sqlMay + ";" + sqlJun + ";" + sqlJul + ";" + sqlAug + ";" + sqlSep + ";" + sqlOct + ";"+ sqlNov + ";" + sqlDec;
-        con.query(sql, [userID, userID, userID, userID, userID, userID, userID, userID, userID, userID, userID, userID], function (err, results){
+        con.query(sql, [userID, year, userID, year, userID, year, userID, year, userID, year, userID, year, userID, year, userID, year, userID, year, userID, year, userID, year, userID, year], function (err, results){
             if (err) throw err;
             const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
             const data = [results[0]['0']['SUM(price)'], results[1]['0']['SUM(price)'], results[2]['0']['SUM(price)'], results[3]['0']['SUM(price)'], results[4]['0']['SUM(price)'], results[5]['0']['SUM(price)'], results[6]['0']['SUM(price)'], results[7]['0']['SUM(price)'], results[8]['0']['SUM(price)'], results[9]['0']['SUM(price)'], results[10]['0']['SUM(price)'], results[11]['0']['SUM(price)']]
             res.render('barChart.ejs', { data: data, month: months, userInfo: user})
         })
     })
-    
-    
+
     app.get('/delete', (req, res) => {
         var sql = "DELETE FROM `?` WHERE id = ?"
         con.query(sql, [user.id, req.query.id], (err, results) => {
@@ -216,12 +224,12 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login', f
     app.post('/adding', (req, res) => {
         userID = (req.query.id);
         var today = new Date();
-        var id = Date.now().toString()
-        var year = today.getFullYear()
-        var month = today.getMonth() + 1
-        var day = today.getDate()
+        var id = Date.now().toString();
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1;
+        var day = today.getDate();
         values = [
-            [id, req.body.category, parseInt(req.body.amount), req.body.description, year, month, day]
+            [id, req.body.category, parseFloat(req.body.amount), req.body.description, year, month, day]
         ]
         con.query('INSERT INTO `?` (id, category, price, description, year, month, day) VALUES ?', [userID, values], function (err, result) {
             if (err) throw err;
@@ -233,19 +241,19 @@ app.post('/login', passport.authenticate('local', { failureRedirect: '/login', f
         userID = (req.query.id);
         var category = 12
         var today = new Date();
-        var id = Date.now().toString()
-        var year = today.getFullYear()
-        var month = today.getMonth() + 1
-        var day = today.getDate()
+        var id = Date.now().toString();
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1;
+        var day = today.getDate();
         values = [
             [id, category, parseInt(req.body.amount), req.body.description, year, month, day]
         ]
         con.query('INSERT INTO `?` (id, category, price, description, year, month, day) VALUES ?', [userID, values], function (err, result) {
             if (err) throw err;
         })
-        res.redirect('/addingIncome?id=' + userID)
+        res.redirect('/addingIncome?id=' + userID);
     }); 
-    res.redirect('/home')
+    res.redirect('/home');
 })
 
 app.get('/logout', function (req, res) {

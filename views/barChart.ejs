@@ -95,15 +95,23 @@
                             labels: <%- JSON.stringify(month); %>,
                             datasets: [{
                                 label: "Total Spending ($) of the month",
-                                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#FAEBD7", "#7FFFD4","#7FFF00","#A9A9A9","#FF8C00"],
+                                backgroundColor: ["#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd"],
                                 data: <%- JSON.stringify(data); %>
                             }]
                             },
                             options: {
-                            title: {
-                                display: true,
-                                text: "Total Spending ($) of the Year"
-                            }
+                                scales: {
+                                yAxes: [{
+                                    display: true,
+                                    ticks: {
+                                        beginAtZero: true    // minimum will be 0, unless there is a lower value.
+                                    }
+                                }]
+                            },
+                                title: {
+                                    display: true,
+                                    text: "Total Spending ($) of the Month "
+                                }
                             }
                         });
                     </script>
